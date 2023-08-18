@@ -1,4 +1,18 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-database-assetinv
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: efs-asset
+
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: assetinv-pvc
