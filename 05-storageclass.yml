@@ -4,5 +4,5 @@ kind: StorageClass
 metadata:
   name: efs-asset
 provisioner: efs-storage
-parameter:
+parameters:
   archiveOnDelete: "false"
