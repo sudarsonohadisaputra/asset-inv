@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: assetinvdb-service
+spec:
+  selector:
+    app: assetinv
+    tier: database
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-assetinv
+  labels:
+    app: assetinv
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assetinv
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: assetinv
+        tier: database
+    spec:
+      containers:
+      - name: mysql
+        image: sudarsonohadisaputra/mysql:saas-v1
+        envFrom:
+          - configMapRef:
+              name: mysql-config
+        ports:
+        - containerPort: 3306
+      volumes:
+      - name: volume-database-assetinv
+        persistentVolumeClaim:
+          claimName: assetinv-pvc
