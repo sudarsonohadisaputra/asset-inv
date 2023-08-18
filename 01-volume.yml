@@ -10,6 +10,12 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: efs-asset
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /tmp
+    server: 172.31.24.59
 
 ---
 apiVersion: v1
