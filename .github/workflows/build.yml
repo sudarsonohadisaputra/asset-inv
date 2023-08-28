@@ -9,11 +9,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Build the Docker image
         working-directory: Apps
-        run: docker build . --file Dockerfile --tag asset-inv:$(date +%s)
+        run: docker build . --file Dockerfile --tag asset-inv:saas-v27
       - name: publish to Dockerhub
-        uses: docker/setup-buildx-action@v2
+        uses: docker/build-push-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: sudarsonohadisaputra/asset-inv
-          tags: $(date +%s)
+          tags: saas-v27
