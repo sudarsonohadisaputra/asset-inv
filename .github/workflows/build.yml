@@ -11,7 +11,7 @@ jobs:
         working-directory: Apps
         run: docker build . --file Dockerfile --tag asset-inv:$(date +%s)
       - name: publish to Dockerhub
-        uses: docker/push-action@v2
+        uses: docker/setup-buildx-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
