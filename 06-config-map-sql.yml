@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mysql-config
-data:
-  MYSQL_DATABASE: "project_inventaris"
-  MYSQL_USER: "assetinv"
-  MYSQL_PASSWORD: "Assetinv123"
-  MYSQL_RANDOM_ROOT_PASSWORD: "yes"
