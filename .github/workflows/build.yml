@@ -16,4 +16,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: sudarsonohadisaputra/asset-inv
-          tags: saas-v27
+          tags: $(date +%s)
