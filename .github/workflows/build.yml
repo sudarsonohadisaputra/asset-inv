@@ -16,7 +16,7 @@ jobs:
           repository: ${{ github.repository }}/asset-inv
           tags: saas-v27, ${{ github.run_number }}
       - name: publish to Dockerhub
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
