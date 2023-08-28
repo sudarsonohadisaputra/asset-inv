@@ -8,7 +8,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Build the Docker image
-        working-directory: Apps
         run: docker build . --file Dockerfile --tag asset-inv:saas-v27
       - name: publish to Dockerhub
         uses: docker/build-push-action@v4
