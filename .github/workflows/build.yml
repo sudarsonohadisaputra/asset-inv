@@ -14,11 +14,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/asset-inv
-          tags: latest, ${{ github.run_number }}
+          tags: saas-v27, ${{ github.run_number }}
       - name: publish to Dockerhub
         uses: docker/build-push-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: sudarsonohadisaputra/asset-inv
-          tags: latest, ${{ github.run_number }}
+          tags: saas-v27, ${{ github.run_number }}
