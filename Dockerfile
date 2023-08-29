@@ -24,7 +24,7 @@ RUN docker-php-ext-install mysqli
 
 # WORKDIR /var/www
 
-COPY ./ /var/www/html
+COPY ./dist/ /var/www/html
 
 CMD ["apache2-foreground"]
 
