@@ -53,10 +53,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - asset.solubis.co.id
+      - assetinv.solubis.co.id
       secretName: letsencrypt
   rules:
-    - host: asset.solubis.co.id
+    - host: assetinv.solubis.co.id
       http:
         paths:
           - path: /
