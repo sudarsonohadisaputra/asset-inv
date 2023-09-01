@@ -20,7 +20,7 @@
 
 
        
-        <h3>Asset Inventory Management</h3>
+        <h3>Asset Inventory Management v2</h3>
 
         <br/>
 
