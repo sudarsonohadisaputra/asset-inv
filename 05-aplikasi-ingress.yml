@@ -55,10 +55,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - assetinv.solubis.net
+      - assetinv2.solubis.net
       secretName: assetinv2-tls
   rules:
-    - host: assetinv.solubis.net
+    - host: assetinv2.solubis.net
       http:
         paths:
           - path: /
