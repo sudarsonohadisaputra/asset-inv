@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: assetinv-ingress
+    app: assetinv2-ingress
     tier: aplikasi
   ports:
     - protocol: TCP
@@ -19,22 +19,22 @@ kind: Deployment
 metadata:
   name: assetinv3-deployment
   labels:
-    app: assetinv-ingress
+    app: assetinv2-ingress
     tier: aplikasi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: assetinv-ingress
+      app: assetinv2-ingress
       tier: aplikasi
   template:
     metadata:
       labels:
-        app: assetinv-ingress
+        app: assetinv2-ingress
         tier: aplikasi
     spec:
       containers:
-      - name: assetinv-ingress
+      - name: assetinv2-ingress
         image: sudarsonohadisaputra/asset-inv:saas-v30
         ports:
         - containerPort: 80
@@ -47,22 +47,24 @@ metadata:
   namespace: default
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/secure-backends: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - assetinv.solubis.co.id
-      secretName: letsencrypt
+      - assetinv.solubis.net
+      secretName: assetinv2-tls
   rules:
-    - host: assetinv.solubis.co.id
+    - host: assetinv.solubis.net
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: assetinv2-service
+                name: assetinv3-service
                 port:
                   number: 80
