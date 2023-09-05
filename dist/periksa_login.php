@@ -1,7 +1,7 @@
 <?php 
 // menghubungkan dengan koneksi
 include 'koneksi.php';
-
+session_start();
 // menangkap data yang dikirim dari form
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -10,7 +10,6 @@ $login = mysqli_query($koneksi, "SELECT * FROM user WHERE user_username='$userna
 $cek = mysqli_num_rows($login);
 
 if($cek > 0){
-	session_start();
 	$data = mysqli_fetch_assoc($login);
 	$_SESSION['id'] = $data['user_id'];
 	$_SESSION['nama'] = $data['user_nama'];

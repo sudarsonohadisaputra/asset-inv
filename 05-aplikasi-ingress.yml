@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: assetinv3-service
+  name: assetinv-service
 spec:
   type: ClusterIP
   selector:
-    app: assetinv2-ingress
+    app: assetinv-ingress
     tier: aplikasi
   ports:
     - protocol: TCP
@@ -17,24 +17,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: assetinv3-deployment
+  name: assetinv-deployment
   labels:
-    app: assetinv2-ingress
+    app: assetinv-ingress
     tier: aplikasi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: assetinv2-ingress
+      app: assetinv-ingress
       tier: aplikasi
   template:
     metadata:
       labels:
-        app: assetinv2-ingress
+        app: assetinv-ingress
         tier: aplikasi
     spec:
       containers:
-      - name: assetinv2-ingress
+      - name: assetinv-ingress
         image: sudarsonohadisaputra/asset-inv:saas-v30
         ports:
         - containerPort: 80
@@ -55,16 +55,16 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - assetinv2.solubis.net
-      secretName: assetinv2-tls
+      - assetinv.solubis.net
+      secretName: assetinv-tls
   rules:
-    - host: assetinv2.solubis.net
+    - host: assetinv.solubis.net
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: assetinv3-service
+                name: assetinv-service
                 port:
                   number: 80
