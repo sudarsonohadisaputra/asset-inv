@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: assetinv-ingress
-        image: sudarsonohadisaputra/asset-inv:saas-v32
+        image: sudarsonohadisaputra/asset-inv:saas-v33
         ports:
         - containerPort: 80
 
